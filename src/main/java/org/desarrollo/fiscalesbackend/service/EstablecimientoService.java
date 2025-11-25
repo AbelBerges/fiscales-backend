@@ -69,6 +69,18 @@ public class EstablecimientoService {
         }).orElse(false);
     }
 
+    public List<EstablecimientoResponseDTO> listaEstablecimientosSinMesa() {
+        return repo.findEstablecimientosSinMesas().stream()
+                .map(EstablecimientoMapper::aEntidadEstablecimientoResponseDTO)
+                .toList();
+    }
+
+    public List<EstablecimientoResponseDTO> listaEstablecimientoConMesas() {
+        return repo.findEstablecimientoConMesas().stream()
+                .map(EstablecimientoMapper::aEntidadEstablecimientoResponseDTO)
+                .toList();
+    }
+
     public EstablecimientoMesasDTO mesasResumen(Integer idEstablecimiento){
         List<Mesa> listado = mesaRepo.findByEstablecimiento_IdEstablecimiento(idEstablecimiento);
         EstablecimientoResponseDTO temp = buscarPorId(idEstablecimiento);

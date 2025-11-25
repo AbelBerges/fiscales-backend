@@ -43,6 +43,16 @@ public class EstablecimientoController {
         return laLista != null ? ResponseEntity.ok(laLista) : ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/buscar-establecimiento-sin-mesas")
+    public ResponseEntity<List<EstablecimientoResponseDTO>> buscoEstablecimientosSinMesas() {
+        return ResponseEntity.ok(servicio.listaEstablecimientosSinMesa());
+    }
+
+    @GetMapping("/buscar-establecimiento-con-mesas")
+    public ResponseEntity<List<EstablecimientoResponseDTO>> buscoEstablecimientosConMesas() {
+        return ResponseEntity.ok(servicio.listaEstablecimientoConMesas());
+    }
+
 
     @PostMapping
     public ResponseEntity<EstablecimientoResponseDTO> guardarEstablecimiento(@RequestBody EstablecimientoRequestDTO dto) {

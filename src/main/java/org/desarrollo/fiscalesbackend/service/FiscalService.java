@@ -180,4 +180,11 @@ public class FiscalService {
         fiscal.setMesa(null);
         repo.save(fiscal);
     }
+
+    @Transactional
+    public void desasignarFiscalGeneral(Integer idFiscal) {
+        Fiscal fiscal = repo.findById(idFiscal).orElseThrow(() ->  new RuntimeException("No se ha encontrado el fiscal general"));
+        fiscal.setEstablecimientoAsignado(null);
+        repo.save(fiscal);
+    }
 }

@@ -122,4 +122,10 @@ public class FiscalController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping("/desasignar-fiscal-general/{idFiscal}")
+    public ResponseEntity<Void> desasignarUnFiscalGeneral(@PathVariable Integer idFiscal) {
+        servicio.desasignarFiscalGeneral(idFiscal);
+        return ResponseEntity.ok().build();
+    }
+
 }
